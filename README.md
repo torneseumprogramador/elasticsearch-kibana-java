@@ -101,9 +101,21 @@ POST products/_doc
   "description": "Limão caetano"
 }
 
+# http://localhost:9200/[INDICE]/_doc/[ID_CUSTOMIZADO] - define o ID que eu quiser d documento
+POST products/_doc/1
+{
+  "name": "Xuxu",
+  "description": "Xuxu beleza"
+}
 
 # http://localhost:9200/[INDICE]/_count
 GET usuarios/_count
+
+# http://localhost:9200/[INDICE]/_doc/[ID] - busca documento por ID
+GET products/_doc/1
+
+# http://localhost:9200/[INDICE]/_search_ - busca todos os documentos
+GET products/_search
 ```
 
 
