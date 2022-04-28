@@ -8,9 +8,9 @@
 ### Kinana
 - Uma ferramenta para mostrar de forma visual e via gráficos dados do ElasticSearch 
 ### Beats
-Uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
+- Uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
 
-# install elasticsearch
+# Install elasticsearch
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
 ```shell
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.1.3-darwin-x86_64.tar.gz
