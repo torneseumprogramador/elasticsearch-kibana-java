@@ -75,6 +75,7 @@ source ~/.bash_profile
 
 # utilizando Kibaba
 ```javascript
+# http://localhost:9200/_search
 GET _search
 {
   "query":{
@@ -82,7 +83,7 @@ GET _search
   }
 }
 
-
+# http://localhost:9200/[INDICE]/_doc
 POST products/_doc
 {
   "name": "Limão",
@@ -90,6 +91,7 @@ POST products/_doc
 }
 
 
+# http://localhost:9200/[INDICE]/_count
 GET usuarios/_count
 ```
 
