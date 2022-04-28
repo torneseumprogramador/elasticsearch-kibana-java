@@ -74,7 +74,7 @@ source ~/.bash_profile
 
 
 # utilizando Kibaba
-````
+```rest
 GET _search
 {
   "query":{
