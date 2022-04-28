@@ -124,6 +124,9 @@ GET products/_search
 
 # http://localhost:9200/[INDICE]/_search?q=banana - busca todos os documentos com termo
 GET products/_search?q=banana
+
+# http://localhost:9200/[INDICE]/_doc/[ID] - confirma se o registro existe
+HEAD products/_doc/1
 ```
 
 
