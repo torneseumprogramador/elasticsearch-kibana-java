@@ -150,6 +150,16 @@ GET products/_search?size=2&from=0
 
 # http://localhost:9200/[INDICE]/_mapping - mostra a descrição do documento, igual a um 'desc table' do SQL
 GET products/_mapping
+
+# http://localhost:9200/[INDICE]/_mapping - altera tipo de um campo
+PUT products/_mapping
+{
+    "properties": {
+        "idade": {
+            "type": "integer"
+        }
+    }
+}
 ```
 
 
