@@ -1,13 +1,13 @@
 # Elastic Stack
 - https://www.elastic.co/pt/
 
-## ElasticSearch 
+### ElasticSearch 
 - Engine de busca extremamente rápido responsável por indexar e fazer buscas de forma precisa em conteúdos
-## Logstash 
+### Logstash 
 - Sistema de log que trabalha integrado com ElasticSearch com ele é possível enviar informações de log do ElasticSearch deixando o histórico de informações gravadas
-## Kinana
+### Kinana
 - Uma ferramenta para mostrar de forma visual e via gráficos dados do ElasticSearch 
-# Beats
+### Beats
 Uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
 
 # install elasticsearch
