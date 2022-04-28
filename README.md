@@ -171,3 +171,8 @@ https://www.sohamkamani.com/java/cli-app-with-maven/
   </dependencies>
 </project>
 ```
+
+
+https://www.baeldung.com/elasticsearch-java
+
+https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-x-pack-ml-post-data.html
