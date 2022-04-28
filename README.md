@@ -144,9 +144,9 @@ GET products/_search?q=description:nanica
 # http://localhost:9200/[INDICE]/_search?size=2 - busca paginado por 2
 GET products/_search?size=2
 
-# http://localhost:9200/[INDICE]/_search?size=2&from=2 - busca paginado por 2, pela pagina 3, from inicia com 0
+# http://localhost:9200/[INDICE]/_search?size=2&from=2 - busca paginado por 2, pela pagina 3
 GET products/_search?size=2&from=2
-# para primeira pagina
+# http://localhost:9200/[INDICE]/_search?size=2&from=0 - busca para primeira pagina, paginado por 2 itens
 GET products/_search?size=2&from=0 
 ```
 
