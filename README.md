@@ -119,8 +119,11 @@ GET usuarios/_count
 # http://localhost:9200/[INDICE]/_doc/[ID] - busca documento por ID
 GET products/_doc/1
 
-# http://localhost:9200/[INDICE]/_search_ - busca todos os documentos
+# http://localhost:9200/[INDICE]/_search - busca todos os documentos
 GET products/_search
+
+# http://localhost:9200/[INDICE]/_search?q=banana - busca todos os documentos com termo
+GET products/_search?q=banana
 ```
 
 
