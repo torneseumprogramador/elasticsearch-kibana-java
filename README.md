@@ -74,7 +74,7 @@ source ~/.bash_profile
 
 
 # utilizando Kibaba
-```nodejs
+```javascript
 GET _search
 {
   "query":{
