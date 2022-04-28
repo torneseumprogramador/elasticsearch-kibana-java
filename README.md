@@ -93,8 +93,6 @@ POST products/_doc
 GET usuarios/_count
 ```
 
-# utilizando API REST (postman)
-
 
 # criando projeto
 mvn archetype:generate -DgroupId=br.com.elasticsearch -DartifactId=elasticsearch -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
