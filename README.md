@@ -10,6 +10,8 @@
 ### Beats
 - Uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
 
+<hr>
+
 # Install elasticsearch
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
 ```shell
