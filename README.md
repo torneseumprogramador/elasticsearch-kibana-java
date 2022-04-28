@@ -1,3 +1,9 @@
+# ElasticStak
+- ElasticSearch = engine de busca extremamente rápido responsável por indexar e fazer buscas de forma precisa em conteúdos
+- Logstash = sistema de log que trabalha integrado com ElasticSearch com ele é possível enviar informações de log do ElasticSearch deixando o histórico de informações gravadas
+- Kinana = uma ferramenta para mostrar de forma visual e via gráficos dados do ElasticSearch 
+- Beats = uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
+
 # elasticsearch
 - https://www.elastic.co/pt/
 

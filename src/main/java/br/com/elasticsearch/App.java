@@ -9,7 +9,8 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        RestService.postGet();
+        // RestService.post();
+        RestService.count();
         // ElasticService.get();
     }
 }
