@@ -3,13 +3,18 @@
 
 ### ElasticSearch 
 - O Elasticsearch é um mecanismo de busca e análise de dados distribuído, gratuito e aberto para todos os tipos de dados, incluindo textuais, numéricos, geoespaciais, estruturados e não estruturados. O Elasticsearch é desenvolvido sobre o Apache Lucene e foi lançado pela primeira vez em 2010 pela Elasticsearch N.V. (agora conhecida como Elastic). Conhecido por suas REST APIs simples, natureza distribuída, velocidade e escalabilidade, o Elasticsearch é o componente central do Elastic Stack, um conjunto de ferramentas gratuitas e abertas para ingestão, enriquecimento, armazenamento, análise e visualização de dados. Comumente chamado de ELK Stack (pelas iniciais de Elasticsearch, Logstash e Kibana), o Elastic Stack agora inclui uma rica coleção de agentes lightweight conhecidos como Beats para enviar dados ao Elasticsearch.
+- https://www.elastic.co/pt/what-is/elasticsearch
 ### Kibana
 - O Kibana é uma aplicação gratuita e aberta de front-end que trabalha com o Elastic Stack, fornecendo recursos de busca e visualização de dados indexados no Elasticsearch. Comumente conhecido como a ferramenta de gráficos para o Elastic Stack (que anteriormente chamava-se ELK Stack após o Elasticsearch, o Logstash e o Kibana), o Kibana também atua como interface do usuário para monitorar, gerenciar e proteger um cluster do Elastic Stack, além de ser o hub centralizado para soluções integradas desenvolvidas no Elastic Stack. Desenvolvido em 2013 a partir da comunidade do Elasticsearch, o Kibana cresceu e se tornou a janela de acesso ao próprio Elastic Stack, oferecendo um portal para usuários e empresas. 
+- https://www.elastic.co/pt/what-is/kibana
 ### Logstash 
 - Sistema de log que trabalha integrado com ElasticSearch com ele é possível enviar informações de log do ElasticSearch deixando o histórico de informações gravadas
+- O Logstash é um pipeline gratuito e aberto de processamento de dados do lado do servidor que faz a ingestão de dados de inúmeras fontes, transforma-os e envia-os para o seu "esconderijo" favorito.
+- https://www.elastic.co/pt/logstash/
 ### Beats
 - Uma espécie de sender que envia dados para o ElasticSearch e Logstash (agente coletor de dados) tipo spark
-
+- O Beats é uma plataforma gratuita e aberta para agentes de dados de finalidade única. Eles enviam dados de centenas ou milhares de computadores e sistemas para o Logstash ou o Elasticsearch.
+- https://www.elastic.co/pt/beats/
 <hr>
 
 # Install elasticsearch
