@@ -137,6 +137,16 @@ PUT products/_doc/1
 
 # http://localhost:9200/[INDICE]/_doc/[ID] - apaga registro pelo ID
 DELETE products/_doc/1
+
+# http://localhost:9200/[INDICE]/_search?q=description:nanica - busca por termo com campo específico
+GET products/_search?q=description:nanica
+
+# http://localhost:9200/[INDICE]/_search?size=2 - busca paginado por 2
+GET products/_search?size=2
+
+# http://localhost:9200/[INDICE]/_search?size=2&from=2 - busca paginado por 2, pela pagina 3, from inicia com 0
+GET products/_search?size=2&from=2
+GET products/_search?size=2&from=0 # para primeira pagina
 ```
 
 
