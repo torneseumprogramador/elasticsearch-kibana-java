@@ -62,11 +62,39 @@ cd kibana-8.1.3/
 ```shell
 code ~/.bash_profile
 
-alias "elasticsearch_start= ~/elasticsearch/src/elasticsearch-server"
-alias "elasticsearch= ~/elasticsearch/src/elasticsearch-cli"
+alias "elasticsearch_start= ~/elasticsearch-8.1.3/bin/elasticsearch"
+alias "kibana_start= ~/kibana-8.1.3/bin/kibana"
 
 source ~/.bash_profile
 ```
+
+# Acessos
+- http://localhost:9200/ # elasticsearch
+- http://localhost:5601 # kibana
+
+
+# utilizando Kibaba
+````
+GET _search
+{
+  "query":{
+    "match_all" : {}
+  }
+}
+
+
+POST products/_doc
+{
+  "name": "Limão",
+  "description": "Limão caetano"
+}
+
+
+GET usuarios/_count
+```
+
+# utilizando API REST (postman)
+
 
 # criando projeto
 mvn archetype:generate -DgroupId=br.com.elasticsearch -DartifactId=elasticsearch -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
@@ -112,48 +140,3 @@ https://www.sohamkamani.com/java/cli-app-with-maven/
   </dependencies>
 </project>
 ```
-
-# criando instancia
-```java
-Jedis jedis = new Jedis("http://localhost:6379");
-```
-
-# utilizando elasticsearch para gravar e ler strings
-```java
-jedis.set("chave", "um valor");
-String cachedResponse = jedis.get("chave");
-```
-
-# Push/Pop
-```java
-jedis.lpush("fila", "item1");
-jedis.lpush("fila", "item2");
-
-String pop1 = jedis.rpop("fila");
-String pop2 = jedis.rpop("fila");
-```
-
-# Sets(Array)
-```java
-jedis.sadd("membros", "danilo");
-jedis.sadd("membros", "lana");
-jedis.sadd("membros", "sheila");
-
-Set<String> membros = jedis.smembers("membros");
-boolean isMember = jedis.sismember("membros", "sheila");
-```
-
-# Hashes
-```java
-jedis.hset("usuario", "nome", "Danilo");
-jedis.hset("usuario", "cpf", "339839389383");
-jedis.hset("usuario", "telefone", "(11)99999-9999");
-        
-String nome = jedis.hget("usuario", "nome");
-        
-Map<String, String> fields = jedis.hgetAll("usuario");
-String cpf = fields.get("cpf");
-```        
-
-# mais infos
-- https://www.baeldung.com/jedis-java-elasticsearch-client-library
