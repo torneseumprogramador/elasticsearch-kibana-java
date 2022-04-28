@@ -127,6 +127,16 @@ GET products/_search?q=banana
 
 # http://localhost:9200/[INDICE]/_doc/[ID] - confirma se o registro existe
 HEAD products/_doc/1
+
+# http://localhost:9200/[INDICE]/_doc/[ID] - atualia registro pelo ID
+PUT products/_doc/1
+{
+  "name" : "Xuxu",
+  "description" : "Xuxu beleza yeah yeah"
+}
+
+# http://localhost:9200/[INDICE]/_doc/[ID] - apaga registro pelo ID
+DELETE products/_doc/1
 ```
 
 
