@@ -351,6 +351,10 @@ POST movies/_doc
 {
   "title": "O vento levou"
 }
+POST movies/_doc
+{
+  "title": "star wars"
+}
 
 # reindexando indices
 POST _reindex
