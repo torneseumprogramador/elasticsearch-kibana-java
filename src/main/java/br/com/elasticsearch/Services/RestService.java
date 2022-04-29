@@ -98,7 +98,8 @@ public class RestService {
 
     public static List<Product> getPaggedList(Integer pg) throws IOException
     {
-        HttpGet get = new HttpGet("http://localhost:9200/products/_search?size=10&from=" + (pg-1));
+        var size = 10;
+        HttpGet get = new HttpGet("http://localhost:9200/products/_search?size=" + size + "&from=" + ((size*pg)-size));
         HttpClientBuilder clientBuilder = HttpClientBuilder.create();
         CloseableHttpClient client = clientBuilder.build();
         get.addHeader("Content-Type", "application/json");
