@@ -47,22 +47,4 @@ public class ElasticService {
         System.out.println("Descricao: " + product.getDescription());
         System.out.println("-------------------------------");
     }
-
-
-    public static void indexDoc() {
-        ClientConfiguration clientConfiguration = ClientConfiguration.builder().connectedTo("localhost:9200").build();
-        RestHighLevelClient client = RestClients.create(clientConfiguration).rest();
-
-        String jsonObject = "{\"age\":10,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
-        IndexRequest request = new IndexRequest("people");
-        request.source(jsonObject, XContentType.JSON);
-        
-        IndexResponse response = client.index(request, RequestOptions.DEFAULT);
-        String index = response.getIndex();
-        long version = response.getVersion();
-            
-        if(Result.CREATED == response.getResult()){
-            System
-        }
-    }    
 }
