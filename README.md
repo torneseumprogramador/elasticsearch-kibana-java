@@ -151,15 +151,255 @@ GET products/_search?size=2&from=0
 # http://localhost:9200/[INDICE]/_mapping - mostra a descrição do documento, igual a um 'desc table' do SQL
 GET products/_mapping
 
+# http://localhost:9200/_reindex - renomear index
+POST /_reindex
+{
+  "source": {
+    "index": "catalogo"
+  },
+  "dest": {
+    "index": "pessoas"
+  }
+}
+
+# http://localhost:9200/[INDICE] - apagar index
+DELETE /catalogo
+
+
+# ====== trabalhando com indice sentitive case e sem acentos ======
+DELETE /my_index
+
+PUT /my_index
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "folding": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "text": {
+        "type": "text",
+        "analyzer": "folding",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+POST my_index/_doc/1
+{"text":"olá"}
+
+GET /my_index/_search?q=ola
+
+GET /my_index/_search
+{
+  "query": {
+    "query_string": {
+      "query": "ola"
+    }
+  }
+}
+
+# ====== definindo tipo antes de criar o documento ======
 # http://localhost:9200/[INDICE]/_mapping - altera tipo de um campo
 PUT products/_mapping
 {
     "properties": {
         "idade": {
-            "type": "integer"
+            "type": "float"
         }
     }
 }
+
+POST products/_doc
+{
+  "name" : "Lenovo",
+  "description" : "Lenovo Laptops",
+  "idade": "20",
+}
+
+GET products/_mapping
+
+# ====== Busca por range, maior que menor que (idade) gte(maior ou igual que), lte(menor ou igual que)======
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+GET pessoas/_search
+{
+  "query": {
+    "range": {
+      "idade": {
+        "gte": 10,
+        "lte": 20
+      }
+    }
+  }
+}
+
+# ====== Busca por range, maior que menor que (data) gte(maior que), lte(menor que)======
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+POST pessoas/_doc
+{
+  "nome": "Daniel",
+  "data": "2022-04-20T10:00:00"
+}
+
+GET pessoas/_search
+{
+  "query": {
+    "range": {
+      "data": {
+        "gte": "2022-04-20T00:00:00",
+        "lte": "2022-04-30T23:59:59"
+      }
+    }
+  }
+}
+
+GET pessoas/_search
+{
+  "query": {
+    "range": {
+      "data": {
+        "time_zone": "+01:00",        
+        "gte": "2022-04-20T00:00:00", 
+        "lte": "now"                  
+      }
+    }
+  }
+}
+
+
+# ====== trabalhando com did you mean ======
+DELETE /movies-titles
+
+PUT movies-titles
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "analysis": {
+        "analyzer": {
+          "trigram": {
+            "type": "custom",
+            "tokenizer": "standard",
+            "filter": ["lowercase", "shingle"]
+          }
+        },
+        "filter": {
+          "shingle": {
+            "type": "shingle",
+            "min_shingle_size": 2,
+            "max_shingle_size": 3
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "fields": {
+          "trigram": {
+            "type": "text",
+            "analyzer": "trigram"
+          }
+        }
+      }
+    }
+  }
+}
+
+# Analise de dados que você poderá buscar
+GET movies-titles/_analyze
+{
+  "field": "title.trigram",
+  "text": "please divide this sentence into shingles"
+}
+
+# exeplos de buscas que ele irá encontrar
+["please", "please divide", "please divide this", "divide", "divide this", "divide this sentence", "this", "this sentence", "this sentence into", "sentence", "sentence into", "sentence into shingles", "into", "into shingles", "shingles"]
+
+# cadastrando itens em movies
+POST movies/_doc
+{
+  "title": "Os amigos dos outros"
+}
+POST movies/_doc
+{
+  "title": "O rato de romeu"
+}
+POST movies/_doc
+{
+  "title": "Matrix revolution"
+}
+POST movies/_doc
+{
+  "title": "O vento levou"
+}
+
+# reindexando indices
+POST _reindex
+{
+  "source": {
+    "index": ["movies"],
+    "_source": ["title"]
+  },
+  "dest": {
+    "index": "movies-titles"
+  }
+}
+
+# está busca mostra o exemplo cadastrado no elasticsearch com did you mean em uma busca com texto "ventu"
+GET movies-titles/_search
+{
+  "suggest": {
+    "text": "ventu",
+    "did_you_mean": {
+      "phrase": {
+        "field": "title.trigram",
+        "size": 5,
+        "direct_generator": [
+          {
+            "field": "title.trigram"
+          }
+        ],
+        "collate": {
+          "query": { 
+            "source" : {
+              "match": {
+                "{{field_name}}": {
+                  "query": "{{suggestion}}",
+                  "operator": "and"
+                }
+              }
+            }
+          },
+          "params": {"field_name" : "title"}
+        },
+        "highlight": {
+          "pre_tag": "<strong>",
+          "post_tag": "</strong>"
+        }
+      }
+    }
+  }
+}
+
 ```
 
 
