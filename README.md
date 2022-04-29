@@ -141,6 +141,11 @@ DELETE products/_doc/1
 # http://localhost:9200/[INDICE]/_search?q=description:nanica - busca por termo com campo específico
 GET products/_search?q=description:nanica
 
+
+# http://localhost:9200/_search?size=2 - [PAGINAÇÃO] padrão para busca geral = 10, alterando para 10
+GET _search?size=2
+# http://localhost:9200/_search - [PAGINAÇÃO] acessando pagina 2 de busca com padrão de 10 em 10
+GET _search?from=1
 # http://localhost:9200/[INDICE]/_search?size=2 - [PAGINAÇÃO] busca paginado por 2
 GET products/_search?size=2
 # http://localhost:9200/[INDICE]/_search?size=2&from=2 - [PAGINAÇÃO] busca paginado por 2, pela pagina 3
