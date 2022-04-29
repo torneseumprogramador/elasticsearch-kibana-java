@@ -84,6 +84,13 @@ alias "kibana_start= ~/kibana-8.1.3/bin/kibana"
 source ~/.bash_profile
 ```
 
+# Shards
+- Partições de documentos no elasticsearch, feitos para melhorar a performance e escalar documentos
+Os documentos são armazenados dentro das shards e o ideal é que cada shard tenha no máximo 50gb para facilitar os processos de busca e a escala das partições (shards) dentro das máquinas do cluster.
+Caso uma máquina morra, teremos shards em outras máquinas para pesquisas.
+Ter muitas Shards prejudica na escrita, por ter que replicar em várias, porém ajuda na pesquisa, pois evita concorrência de buscas na mesma shard
+
+
 # Acessos
 - http://localhost:9200/ # elasticsearch
 - http://localhost:5601 # kibana
