@@ -434,7 +434,7 @@ https://www.sohamkamani.com/java/cli-app-with-maven/
 <project>
   <dependencies>
 
-    <dependency>
+   <dependency>
       <groupId>co.elastic.clients</groupId>
       <artifactId>elasticsearch-java</artifactId>
       <version>8.1.3</version>
@@ -443,7 +443,7 @@ https://www.sohamkamani.com/java/cli-app-with-maven/
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.12.3</version>
+      <version>2.13.2.2</version>
     </dependency>
 
     <!-- Needed only if you use the spring-boot Maven plugin -->
@@ -451,6 +451,12 @@ https://www.sohamkamani.com/java/cli-app-with-maven/
       <groupId>jakarta.json</groupId>
       <artifactId>jakarta.json-api</artifactId>
       <version>2.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.9</version>
     </dependency>
 
   </dependencies>
