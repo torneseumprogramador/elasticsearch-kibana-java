@@ -26,9 +26,9 @@ public class App
         //     System.out.println("===============================");
         // }
 
-        listaPaginada(1);
+        // listaPaginada(1);
 
-        // ElasticService.get();
+        ElasticService.get();
     }
 
     private static void listaPaginada(Integer pg) throws IOException {
