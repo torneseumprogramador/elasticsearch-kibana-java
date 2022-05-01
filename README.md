@@ -148,6 +148,18 @@ DELETE products/_doc/1
 # http://localhost:9200/[INDICE]/_search?q=description:nanica - busca por termo com campo específico
 GET products/_search?q=description:nanica
 
+GET products/_search
+{
+  "query":{
+    "bool": { 
+      "filter": [ 
+        { "match":  { "name": "Morango" }},
+        { "range": { "idade": { "gte": 10 }}}
+      ]
+    }
+  }
+}
+
 
 # http://localhost:9200/_search?size=2 - [PAGINAÇÃO] padrão para busca geral = 10, alterando para 2
 GET _search?size=2
