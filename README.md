@@ -148,6 +148,37 @@ DELETE products/_doc/1
 # http://localhost:9200/[INDICE]/_search?q=description:nanica - busca por termo com campo específico
 GET products/_search?q=description:nanica
 
+GET products/_search
+{
+  "query":{
+    "bool": { 
+      "filter": [ 
+        { "match":  { "name": "Morango" }},
+        { "range": { "idade": { "gte": 10 }}}
+      ]
+    }
+  }
+}
+
+GET products/_search
+{
+  "query":{
+    "query_string": {
+      "query": "Morango OR grande",
+      "default_field": "description"
+    }
+  }
+}
+
+GET products/_search
+{
+  "query":{
+    "query_string": {
+      "query": "Morango AND grande",
+      "default_field": "description"
+    }
+  }
+}
 
 # http://localhost:9200/_search?size=2 - [PAGINAÇÃO] padrão para busca geral = 10, alterando para 2
 GET _search?size=2
@@ -167,6 +198,11 @@ Size/from
 10 / 10 = página 2 de 10
 10 / 20 = página 3 de 10
 10 / 40 = página 4 de 10
+
+# calculo
+size = 10
+pg = 1
+from = (pg * size) - size
 
 # http://localhost:9200/[INDICE]/_mapping - mostra a descrição do documento, igual a um 'desc table' do SQL
 GET products/_mapping
