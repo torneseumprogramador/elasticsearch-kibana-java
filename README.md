@@ -160,6 +160,25 @@ GET products/_search
   }
 }
 
+GET products/_search
+{
+  "query":{
+    "query_string": {
+      "query": "Morango OR grande",
+      "default_field": "description"
+    }
+  }
+}
+
+GET products/_search
+{
+  "query":{
+    "query_string": {
+      "query": "Morango AND grande",
+      "default_field": "description"
+    }
+  }
+}
 
 # http://localhost:9200/_search?size=2 - [PAGINAÇÃO] padrão para busca geral = 10, alterando para 2
 GET _search?size=2
