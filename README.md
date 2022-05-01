@@ -199,6 +199,11 @@ Size/from
 10 / 20 = página 3 de 10
 10 / 40 = página 4 de 10
 
+# calculo
+size = 10
+pg = 1
+from = (pg * size) - size
+
 # http://localhost:9200/[INDICE]/_mapping - mostra a descrição do documento, igual a um 'desc table' do SQL
 GET products/_mapping
 
